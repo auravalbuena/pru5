@@ -2,7 +2,7 @@ name: Daily Update
 
 on:
   schedule:
-    - cron: '14 12 * * *' # Se ejecuta a las 12:14 UTC todos los días
+    - cron: '30 12 * * *' # Se ejecuta a las 12:30 PM UTC todos los días
 
 jobs:
   update:
@@ -10,7 +10,7 @@ jobs:
     
     steps:
     - name: Checkout repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       
     - name: Make a small change
       run: |
