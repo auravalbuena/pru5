@@ -1,0 +1,25 @@
+name: Daily Update
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Se ejecuta a las 00:00 UTC todos los días
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+      
+    - name: Make a small change
+      run: |
+        echo "Última actualización: $(date)" >> README.md
+        
+    - name: Commit and push if there are changes
+      run: |
+        git config --global user.email "you@example.com"
+        git config --global user.name "Your Name"
+        git add -A
+        git commit -m "Daily update" -a || echo "No changes to commit"
+        git push
